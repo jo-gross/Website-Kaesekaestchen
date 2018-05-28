@@ -1,0 +1,77 @@
+table{
+	border-collapse: seperate;
+	border-spacing: 0px;
+	border-style:solid;
+	border-width: thin;
+}
+
+.squareSmall{
+  background: rgb(0,0,0);
+	border-style: solid;
+	border-width: thin;
+	height: 1em;
+	width: 1em;
+}
+
+.squareBig{
+	border-style: solid;
+	border-width: thin;
+	height: 5em;
+	width: 5em;
+}
+
+.quaderVertical{
+	border-style: solid;
+	border-width: thin;
+	height: 5em;
+	width: 1em;
+	margin: 0px;
+}
+
+.quaderHorizontal{
+	border-style: solid;
+	border-width: thin;
+	height: 1em;
+	width: 5em;
+}
+
+.tic-tac-toe .p1 {
+  content: "";
+  background: rgb(255, 0, 0);
+}
+
+.tic-tac-toe .p2 {
+  content: "";
+  color: rgba(255, 0, 0, 0);
+  background: rgb(0, 0,255);
+}
+
+.tic-tac-toe .p3 {
+  content: "";
+  background: rgb(0, 255, 0);
+}
+
+.tic-tac-toe .p4 {
+  content: "";
+  background: rgb(0, 255, 255);
+}
+
+.tic-tac-toe .p5 {
+  content: "";
+  background: rgb(255, 0, 255);
+}
+
+.tic-tac-toe .p6 {
+  content: "";
+  background: rgb(255, 255, 0);
+}
+/*
+.tic-tac-toe .p1,.tic-tac-toe .p2,.tic-tac-toe .p3,.tic-tac-toe .p4,.tic-tac-toe .p5,.tic-tac-toe .p6{
+  background: rgb(0, 0, 0);
+}
+*/
+
+.tic-tac-toe button {
+  left: -100vw;
+  position: absolute;
+}
