@@ -12,14 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		var current = 1,
 		field = document.createElement("table"),
-		caption = document.createElement("caption"),
 		finished, games, b, c, i, r, tr;
 
 		// Tabelle ins Dokument einfügen
 		element.appendChild(field);
 
-		// Tabelle aufbauen
-		field.appendChild(caption); // Beschriftung
 		field.appendChild(document.createElement("tbody"));
 
 		for (r = 0; r < spielgroesseY; r++) {
@@ -77,13 +74,15 @@ function mark (event) {
 	if (td.tagName.toLowerCase() == "td") {
 		// angeklickte Zelle in td
 		if(td.className == "quaderHorizontal" || td.className == "quaderVertical"){
-			checkNewOwner(td);
+			var wasBlock = checkNewOwner(td);
 
-			td.className = "p" + current; // Klassennamen vergeben
+			td.className = td.className + " p" + current; // Klassennamen vergeben
 			//td.innerHTML = "p" + current; // Spielersymbol eintragen
 			td.innerHTML = "";
 
-			current++;
+			if(wasBlock == "0"){
+				current++;
+			}
 			if(current > players){
 				current = 1;
 			}
@@ -101,6 +100,7 @@ function checkNewOwner(obj){
 	var y = pos[1];
 	// //x = 0, y = 1
 	if(obj.className == "quaderHorizontal") {
+		var ret = "0";
 
 		var t1x = x-1;
 		var t1y = y-1;
@@ -131,7 +131,11 @@ function checkNewOwner(obj){
 			if( t1.className != "quaderVertical" && t2.className != "quaderHorizontal" && t3.className != "quaderVertical"){
 				var sy = y-1;
 				var block = document.getElementById("" + x + ";" + sy + "");
-				block.className = "p"+current;
+				block.className = block.className + " p" +current;
+				ret = 1;
+
+				var score = document.getElementById("scoreP" + current);
+				score.innerHTML = parseInt(score.innerHTML)+1;
 			}
 		}
 		//Bottom
@@ -140,10 +144,18 @@ function checkNewOwner(obj){
 			if(b1.className != "quaderVertical" && b2.className != "quaderHorizontal" && b3.className != "quaderVertical"){
 				var sy = parseInt(y)+1;
 				var block = document.getElementById("" + x + ";" + sy + "");
-				block.className = "p"+current;
+				block.className = block.className + " p" +current;
+				ret = "1";
+
+				var score = document.getElementById("scoreP" + current);
+				score.innerHTML = parseInt(score.innerHTML)+1;
 			}
 		}
+		return ret;
+
 	}else if(obj.className == "quaderVertical"){
+		var ret = "0";
+
 		var l1x = x-1;
 		var l1y = y-1;
 
@@ -178,7 +190,11 @@ function checkNewOwner(obj){
 			if(l1.className != "quaderHorizontal" && l2.className != "quaderVertical" && l3.className != "quaderHorizontal"){
 				var sx = x-1;
 				var block = document.getElementById("" + sx + ";" + y + "");
-				block.className = "p"+current;
+				block.className = block.className + " p" +current;
+				ret = "1";
+
+				var score = document.getElementById("scoreP" + current);
+				score.innerHTML = parseInt(score.innerHTML)+1;
 			}
 		}
 		//RIGHT
@@ -187,9 +203,16 @@ function checkNewOwner(obj){
 			if(r1.className != "quaderHorizontal" && r2.className != "quaderVertical" && r3.className != "quaderHorizontal"){
 				var sx = parseInt(x)+1;
 				var block = document.getElementById("" + sx + ";" + y + "");
-				block.className = "p"+current;
+				block.className = block.className + " p" +current;
+				ret = "1";
+
+				var score = document.getElementById("scoreP" + current);
+				score.innerHTML = parseInt(score.innerHTML)+1;
 			}
 		}
+
+		return ret;
+
 	}else{
 		// alert(pos[0] + " " + pos[1]);
 	}
@@ -212,7 +235,32 @@ function checkBoxes(){
 
 	// wenn full, dann Spiel vorbei, wenn nicht full, dann noch nicht
 	if (full) {
-		alert("Hi");
+
+		var scoreP1 = document.getElementById("scoreP1");
+		var scoreP2 = document.getElementById("scoreP2");
+		var scoreP3 = document.getElementById("scoreP3");
+		var scoreP4 = document.getElementById("scoreP4");
+		var scoreP5 = document.getElementById("scoreP5");
+		var scoreP6 = document.getElementById("scoreP6");
+
+
+		scoreP1 = parseInt(scoreP1.innerHTML);
+		scoreP2 = parseInt(scoreP2.innerHTML);
+		scoreP3 = parseInt(scoreP3.innerHTML);
+		scoreP4 = parseInt(scoreP4.innerHTML);
+		scoreP5 = parseInt(scoreP5.innerHTML);
+		scoreP6 = parseInt(scoreP6.innerHTML);
+
+
+		if(scoreP1 > scoreP2 && scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)alert("Spieler 1 gewinnt mit " +scoreP1 + " Punkten");
+		else if(scoreP2 > scoreP2 && scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)alert("Spieler 2 gewinnt mit " +scoreP2 + " Punkten");
+		else if(scoreP3 > scoreP2 && scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)alert("Spieler 3 gewinnt mit " +scoreP3 + " Punkten");
+		else if(scoreP4 > scoreP2 && scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)alert("Spieler 4 gewinnt mit " +scoreP4 + " Punkten");
+		else if(scoreP5 > scoreP2 && scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)alert("Spieler 5 gewinnt mit " +scoreP5 + " Punkten");
+		else if(scoreP6 > scoreP2 && scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)alert("Spieler 6 gewinnt mit " +scoreP6 + " Punkten");
+
+
+
 		reset();
 		// Spiel zu Ende weil alle Felder belegt
 	}

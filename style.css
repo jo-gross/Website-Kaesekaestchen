@@ -35,34 +35,27 @@ table{
 	width: 5em;
 }
 
-.tic-tac-toe .p1 {
-  content: "";
+ .p1 {
   background: rgb(255, 0, 0);
 }
 
-.tic-tac-toe .p2 {
-  content: "";
-  color: rgba(255, 0, 0, 0);
+ .p2 {
   background: rgb(0, 0,255);
 }
 
-.tic-tac-toe .p3 {
-  content: "";
+ .p3 {
   background: rgb(0, 255, 0);
 }
 
-.tic-tac-toe .p4 {
-  content: "";
+ .p4 {
   background: rgb(0, 255, 255);
 }
 
-.tic-tac-toe .p5 {
-  content: "";
+ .p5 {
   background: rgb(255, 0, 255);
 }
 
-.tic-tac-toe .p6 {
-  content: "";
+.p6 {
   background: rgb(255, 255, 0);
 }
 /*
