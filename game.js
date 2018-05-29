@@ -78,12 +78,12 @@ function mark (event) {
 		// angeklickte Zelle in td
 		if(td.className == "quaderHorizontal" || td.className == "quaderVertical"){
 			checkNewOwner(td);
+
 			td.className = "p" + current; // Klassennamen vergeben
 			//td.innerHTML = "p" + current; // Spielersymbol eintragen
 			td.innerHTML = "";
-			checkNewOwner(td);
-			current++;
 
+			current++;
 			if(current > players){
 				current = 1;
 			}
@@ -104,56 +104,99 @@ function checkNewOwner(obj){
 
 		var t1x = x-1;
 		var t1y = y-1;
-
 		var t2x = x;
 		var t2y = y-2;
-
-		var t3x = x+1;
+		var t3x = x-(-1);
 		var t3y = y-1;
-
 
 		var	t1 = document.getElementById("" + t1x + ";" + t1y + "");
 		var	t2 = document.getElementById("" + t2x + ";" + t2y + "");
 		var t3 = document.getElementById("" + t3x + ";" + t3y + "");
 
+		var b1x = x-1;
+		var b1y = y- (-1);
+		var b2x = x;
+		var b2y = y-(-2);
+		var b3x = x-(-1);
+		var b3y = y-(-1);
 
-		// var	t1 = document.getElementById("" + x-1 + ";" + y-1 + "");
-		// var	t2 = document.getElementById("" + x + ";" + y-2 + "");
-		// var t3 = document.getElementById("" + x+1 + ";" + y-1 + "");
-		//
-		// var	b1 = document.getElementById("" + x-1 + ";" + y+1 + "");
-		// var	b2 = document.getElementById("" + x + ";" + y+2 + "");
-		// var	b3 = document.getElementById("" + x+1 + ";" + y+1 + "");
-		// }
-		if(t1.className != "quaderVertical" && t2.className != "quaderHorizontal" && t3.className != "quaderVertical"){
-			// var block = document.getElementById("" + x + ";" + y-1 + "");
-			var block = document.getElementById("0,0");
-			block.className = "p"+current;
+		var	b1 = document.getElementById("" + b1x + ";" + b1y + "");
+		var	b2 = document.getElementById("" + b2x + ";" + b2y + "");
+		var	b3 = document.getElementById("" + b3x + ";" + b3y + "");
+		// t1!= null && t2!= null && t3!= null &&
+
+		//TOP
+		//Nur wenn x>0 && x<spielgroesseX && y > 1 && y <= spielgroesseY
+		if(x>0 && x<spielgroesseX && y > 1 && y <= spielgroesseY ){
+			if( t1.className != "quaderVertical" && t2.className != "quaderHorizontal" && t3.className != "quaderVertical"){
+				var sy = y-1;
+				var block = document.getElementById("" + x + ";" + sy + "");
+				block.className = "p"+current;
+			}
 		}
-
-		// if(b1!=null && b2!=null && b3!=null && b1.className != "quaderVertical" && b2.className != "quaderHorizontal" && b3.className != "quaderVertical"){
-		// 	//feld Füllen
-		// 	// var block = document.getElementById("" + x + ";" + y+1 + "");
-		// 	var block = document.getElementById("0;0");
-		// 	block.className = "p"+current;
-		// }
-
+		//Bottom
+		//Nur wenn x >0 && x<spielgroesseX && y >= 0 && y < spielgroesseY
+		if(x>0 && x<spielgroesseX && y >= 0 && y < spielgroesseY -1){
+			if(b1.className != "quaderVertical" && b2.className != "quaderHorizontal" && b3.className != "quaderVertical"){
+				var sy = parseInt(y)+1;
+				var block = document.getElementById("" + x + ";" + sy + "");
+				block.className = "p"+current;
+			}
+		}
 	}else if(obj.className == "quaderVertical"){
-		var l1 = document.getElementById("" + x-1 + ";" + y-1 + "");
-		var l2 = document.getElementById("" + x-2 + ";" + y + "");
-		var l3 = document.getElementById("" + x-1 + ";" + y+1 + "");
+		var l1x = x-1;
+		var l1y = y-1;
 
-		var r1 = document.getElementById("" + x+1 + ";" + y-1 + "");
-		var r2 = document.getElementById("" + x+2 + ";" + y + "");
-		var r3 = document.getElementById("" + x+1 + ";" + y+1 + "");
+		var l2x = x-2;
+		var l2y = y;
 
-		if(x.className != "quaderHorizontal"){
+		var l3x = x-1;
+		var l3y = y-(-1);
 
+
+		var r1x = x-(-1);
+		var r1y = y-1;
+
+		var r2x = x-(-2);
+		var r2y = y;
+
+		var r3x = x-(-1);
+		var r3y = y-(-1);
+
+
+		var l1 = document.getElementById("" + l1x + ";" + l1y + "");
+		var l2 = document.getElementById("" + l2x + ";" + l2y + "");
+		var l3 = document.getElementById("" + l3x + ";" + l3y + "");
+
+		var r1 = document.getElementById("" + r1x + ";" + r1y + "");
+		var r2 = document.getElementById("" + r2x + ";" + r2y + "");
+		var r3 = document.getElementById("" + r3x + ";" + r3y + "");
+
+		//LEFT
+		//Nur wenn x > 1 && x <= spielgroesseX && y > 0 && y < spielgroesseY
+		if(x > 1 && x <= spielgroesseX && y > 0 && y < spielgroesseY ){
+			if(l1.className != "quaderHorizontal" && l2.className != "quaderVertical" && l3.className != "quaderHorizontal"){
+				var sx = x-1;
+				var block = document.getElementById("" + sx + ";" + y + "");
+				block.className = "p"+current;
+			}
 		}
-
+		//RIGHT
+		//Nur wenn x >= 0 && x < spielgroesseX && y > o && y < spielgroesseY
+		if(x >= 0 && x < spielgroesseX-1 && y > 0 && y < spielgroesseY ){
+			if(r1.className != "quaderHorizontal" && r2.className != "quaderVertical" && r3.className != "quaderHorizontal"){
+				var sx = parseInt(x)+1;
+				var block = document.getElementById("" + sx + ";" + y + "");
+				block.className = "p"+current;
+			}
+		}
 	}else{
 		// alert(pos[0] + " " + pos[1]);
 	}
+}
+
+function reset(){
+
 }
 
 function checkBoxes(){
@@ -170,6 +213,7 @@ function checkBoxes(){
 	// wenn full, dann Spiel vorbei, wenn nicht full, dann noch nicht
 	if (full) {
 		alert("Hi");
+		reset();
 		// Spiel zu Ende weil alle Felder belegt
 	}
 }
