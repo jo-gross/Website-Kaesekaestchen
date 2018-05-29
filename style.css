@@ -26,6 +26,8 @@ table{
 	height: 5em;
 	width: 1em;
 	margin: 0px;
+
+
 }
 
 .quaderHorizontal{
@@ -67,4 +69,15 @@ table{
 .tic-tac-toe button {
   left: -100vw;
   position: absolute;
+}
+
+.playerContainer {
+	width: 100%;
+}
+.player {
+	color : rgb(255,255,255);
+	padding-left: 12px;
+	margin-right: 1em;
+  float: left;
+	width: 14%;
 }
