@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		var givenX=new String(uebernahme.substring(fi1+1,fi2));
 		var givenY=new String(uebernahme.substring(fi2+1,uebernahme.length));
 
-		alert(givenPlay + "#" + givenX + "#" + givenY);
+		//alert(givenPlay + "#" + givenX + "#" + givenY);
 
 		if(givenX!=null && givenX!="" && parseInt(givenX) >=2){
 			spielgroesseX = parseInt(givenX);
@@ -257,15 +257,21 @@ document.addEventListener("DOMContentLoaded", function () {
 				scoreP5 = parseInt(scoreP5.innerHTML);
 				scoreP6 = parseInt(scoreP6.innerHTML);
 
-				alert(scoreP1 + " " + scoreP2 + " " + scoreP3 + " " + scoreP4 + " " + scoreP5 + " " + scoreP6)
+//				alert(scoreP1 + " " + scoreP2 + " " + scoreP3 + " " + scoreP4 + " " + scoreP5 + " " + scoreP6)
 
-				     if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)alert("Spieler 1 gewinnt mit " +scoreP1 + " Punkten");
-				else if(scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)alert("Spieler 2 gewinnt mit " +scoreP2 + " Punkten");
-				else if(scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)alert("Spieler 3 gewinnt mit " +scoreP3 + " Punkten");
-				else if(scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)alert("Spieler 4 gewinnt mit " +scoreP4 + " Punkten");
-				else if(scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)alert("Spieler 5 gewinnt mit " +scoreP5 + " Punkten");
-				else if(scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)alert("Spieler 6 gewinnt mit " +scoreP6 + " Punkten");
-				else alert("Unentschieden!");
+				var endstring = "";
+
+				     if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)endstring = "Spieler 1 gewinnt mit " +scoreP1 + " Punkten";
+				else if(scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)endstring = "Spieler 2 gewinnt mit " +scoreP2 + " Punkten";
+				else if(scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)endstring = "Spieler 3 gewinnt mit " +scoreP3 + " Punkten";
+				else if(scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)endstring = "Spieler 4 gewinnt mit " +scoreP4 + " Punkten";
+				else if(scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)endstring = "Spieler 5 gewinnt mit " +scoreP5 + " Punkten";
+				else if(scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)endstring = "Spieler 6 gewinnt mit " +scoreP6 + " Punkten";
+				else endstring = "Unentschieden!";
+
+				alert(endstring + "\n\n Drücke Ok für ein weiteres Spiel!");
+
+				window.open ('startup.html?'+players+'*'+((spielgroesseX-1)/2)+'#'+((spielgroesseY-1)/2),'_self',false);
 
 			}
 		}

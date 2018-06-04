@@ -2,6 +2,8 @@ var players = 2;
 var spielgroesseX = 2;
 var spielgroesseY = 2;
 
+
+
 function getValues(){
 	players = parseInt(document.getElementById('players').value);
 	if (players == "" || isNaN(players)) {

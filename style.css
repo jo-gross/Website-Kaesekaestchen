@@ -1,3 +1,39 @@
+header {
+	background-color: rgb(67, 67, 67);
+}
+
+.div-hauptcontainer {
+	margin: 10px 0 0 10px;
+	width:100%;
+	float: left;
+}
+
+#ldiv-container1 {
+	background-color: rgb(67,67,67);
+	float: both;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+#div-container2 {
+	float: both;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+.box {
+	float: left;
+	width: 14%;
+	margin-right: 2%;
+	padding: 20px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.box:last-child {
+	margin-right: 0;
+}
+
 table{
 	border-collapse: seperate;
 	border-spacing: 0px;
@@ -6,7 +42,7 @@ table{
 }
 
 .squareSmall{
-  background: rgb(0,0,0);
+	background: rgb(0,0,0);
 	border-style: solid;
 	border-width: thin;
 	height: 1em;
@@ -37,47 +73,62 @@ table{
 	width: 5em;
 }
 
- .p1 {
-  background: rgb(255, 0, 0);
+.p1 {
+	background: rgb(255, 0, 0);
 }
 
- .p2 {
-  background: rgb(0, 0,255);
+.p2 {
+	background: rgb(0, 0,255);
 }
 
- .p3 {
-  background: rgb(0, 255, 0);
+.p3 {
+	background: rgb(0, 255, 0);
 }
 
- .p4 {
-  background: rgb(0, 255, 255);
+.p4 {
+	background: rgb(0, 255, 255);
 }
 
- .p5 {
-  background: rgb(255, 0, 255);
+.p5 {
+	background: rgb(255, 0, 255);
 }
 
 .p6 {
-  background: rgb(255, 255, 0);
+	background: rgb(255, 255, 0);
 }
 /*
 .tic-tac-toe .p1,.tic-tac-toe .p2,.tic-tac-toe .p3,.tic-tac-toe .p4,.tic-tac-toe .p5,.tic-tac-toe .p6{
-  background: rgb(0, 0, 0);
+background: rgb(0, 0, 0);
 }
 */
 
+/* .headerPane {
+background-color: rgb(67, 67, 67);
+} */
+
+
+
+h1{
+	color: rgb(255,255,255);
+	text-align: center;
+}
+.topbar{
+
+	width: 100%;
+}
+
 .tic-tac-toe button {
-  left: -100vw;
-  position: absolute;
+	left: -100vw;
+	position: absolute;
 }
 
 .playerContainer {
 	width: 100%;
 }
 .player {
-	color : rgb(255,255,255);
+	/* color : rgb(255,255,255);
 	padding-left: 12px;
 	margin-right: 1em;
-  float: left;
-	width: 14%;
+	float: left;
+	width: 14%; */
 }
