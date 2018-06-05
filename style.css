@@ -1,29 +1,21 @@
-header {
-	background-color: rgb(67, 67, 67);
+body {
+	margin: 0;
+	font-family: Arial;
 }
 
-.div-hauptcontainer {
-	margin: 10px 0 0 10px;
-	width:100%;
-	float: left;
+.header {
+	padding: 10px 16px;
+	background: #555;
+	color: #f1f1f1;
 }
 
-#ldiv-container1 {
-	background-color: rgb(67,67,67);
-	float: both;
-	margin-left: 0px;
-	margin-top: 0px;
-}
-
-#div-container2 {
-	float: both;
-	margin-left: 0px;
-	margin-top: 0px;
+.content {
+	padding: 16px;
 }
 
 .box {
 	float: left;
-	width: 14%;
+	width: 15%;
 	margin-right: 2%;
 	padding: 20px;
 	box-sizing: border-box;
@@ -39,6 +31,10 @@ table{
 	border-spacing: 0px;
 	border-style:solid;
 	border-width: thin;
+
+	float: left;
+	position: relative;
+	left: 1%;
 }
 
 .squareSmall{
@@ -96,24 +92,12 @@ table{
 .p6 {
 	background: rgb(255, 255, 0);
 }
-/*
-.tic-tac-toe .p1,.tic-tac-toe .p2,.tic-tac-toe .p3,.tic-tac-toe .p4,.tic-tac-toe .p5,.tic-tac-toe .p6{
-background: rgb(0, 0, 0);
-}
-*/
-
-/* .headerPane {
-background-color: rgb(67, 67, 67);
-} */
-
-
 
 h1{
 	color: rgb(255,255,255);
 	text-align: center;
 }
 .topbar{
-
 	width: 100%;
 }
 
@@ -125,10 +109,8 @@ h1{
 .playerContainer {
 	width: 100%;
 }
+
 .player {
-	/* color : rgb(255,255,255);
-	padding-left: 12px;
-	margin-right: 1em;
-	float: left;
-	width: 14%; */
+	font-size: 1.5em;
+	color : rgb(0,0,0);
 }
