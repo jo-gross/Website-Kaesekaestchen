@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				alert(endstring + "\n\n Drücke Ok für ein weiteres Spiel!");
 
-				window.open ('startup.html?'+players+'*'+((spielgroesseX-1)/2)+'#'+((spielgroesseY-1)/2),'_self',false);
+				window.open ('index.html?'+players+'*'+((spielgroesseX-1)/2)+'#'+((spielgroesseY-1)/2),'_self',false);
 
 			}
 		}
