@@ -1,11 +1,12 @@
 body {
 	margin: 0;
 	font-family: Arial;
+	background-color: #363636;
 }
 
 .header {
 	padding: 10px 16px;
-	background: #555;
+	background: #1C1C1C;
 	color: #f1f1f1;
 }
 
@@ -74,27 +75,27 @@ table{
 }
 
 .p1 {
-	background: rgb(255, 0, 0);
+	background: #DC6454;
 }
 
 .p2 {
-	background: rgb(0, 0,255);
+	background: #5DBFE4;
 }
 
 .p3 {
-	background: rgb(0, 255, 0);
+	background: #99DD54;
 }
 
 .p4 {
-	background: rgb(0, 255, 255);
+	background: #EF9549;
 }
 
 .p5 {
-	background: rgb(255, 0, 255);
+	background: #7989C4;
 }
 
 .p6 {
-	background: rgb(255, 255, 0);
+	background: #FFC73C;
 }
 
 h1{
@@ -117,4 +118,8 @@ h1{
 .player {
 	font-size: 1.5em;
 	color : rgb(0,0,0);
+}
+
+.active {
+	box-shadow: 0px 0px 5px 5px #ffffff;
 }

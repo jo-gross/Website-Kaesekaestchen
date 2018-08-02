@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		field = document.createElement("table"),
 		finished, games, b, c, i, r, tr;
 
+		document.getElementById("scoreP" + current).classList.add('active');
+
 		element.appendChild(field);
 		field.appendChild(document.createElement("tbody"));
 
@@ -92,10 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
 					td.innerHTML = "";
 
 					if(wasBlock == "0"){
+
+						document.getElementById("scoreP" + current).classList.remove('active');
 						current++;
+						document.getElementById("scoreP" + current).classList.add('active');
 					}
 					if(current > players){
+
+						document.getElementById("scoreP" + current).classList.remove('active');
 						current = 1;
+						document.getElementById("scoreP" + current).classList.add('active');
 					}
 				}
 			}
@@ -213,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						var sx = parseInt(x)+1;
 						var block = document.getElementById("" + sx + ";" + y + "");
 						block.className = block.className + " p" +current;
+
 						ret = "1";
 
 						var score = document.getElementById("scoreP" + current);
