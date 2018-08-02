@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 
+		for(var i=players+1; i<=6;i++){
+
+				document.getElementById("scoreP" + i).classList.add('invisible');
+
+		}
+
 		if(givenPlay!=null && givenPlay!="" && parseInt(givenPlay) <=6 && parseInt(givenPlay) >=2){
 			players = parseInt(givenPlay);
 		}
