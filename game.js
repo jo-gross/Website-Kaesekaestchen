@@ -25,16 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			spielgroesseY = parseInt(givenY);
 		}
 
-
-		for(var i=players+1; i<=6;i++){
-
-				document.getElementById("scoreP" + i).classList.add('invisible');
-
-		}
-
 		if(givenPlay!=null && givenPlay!="" && parseInt(givenPlay) <=6 && parseInt(givenPlay) >=2){
 			players = parseInt(givenPlay);
 		}
+
+		
+				for(var i=players+1; i<7;i++){
+
+						document.getElementById("scoreP" + i).classList.add('invisible');
+
+				}
 
 		spielgroesseX = (spielgroesseX * 2) + 1;
 		spielgroesseY = (spielgroesseY * 2) + 1;

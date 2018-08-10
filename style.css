@@ -1,3 +1,6 @@
+.content{
+  
+}
 body {
 	margin: 0;
 	font-family: Arial;
@@ -63,6 +66,7 @@ table{
 	height: 5em;
 	width: 1em;
 	margin: 0px;
+	background-color: #bbbbbb;
 
 
 }
@@ -72,6 +76,7 @@ table{
 	border-width: thin;
 	height: 1em;
 	width: 5em;
+	background-color: #bbbbbb;
 }
 
 .p1 {
