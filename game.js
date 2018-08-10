@@ -25,11 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			spielgroesseY = parseInt(givenY);
 		}
 
-
 		if(givenPlay!=null && givenPlay!="" && parseInt(givenPlay) <=6 && parseInt(givenPlay) >=2){
 			players = parseInt(givenPlay);
 		}
 
+
+				for(var i=players+1; i<7;i++){
+
+						document.getElementById("scoreP" + i).classList.add('invisible');
+
+				}
+				var widthCalc = (100/players) - 2;
+ 			document.styleSheets[0].cssRules[3].style.width = widthCalc + "%";
 		spielgroesseX = (spielgroesseX * 2) + 1;
 		spielgroesseY = (spielgroesseY * 2) + 1;
 
