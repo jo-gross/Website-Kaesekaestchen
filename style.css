@@ -66,6 +66,7 @@ table{
 	height: 5em;
 	width: 1em;
 	margin: 0px;
+	border-color: #000000;
 	background-color: #bbbbbb;
 
 
@@ -74,6 +75,7 @@ table{
 .quaderHorizontal{
 	border-style: solid;
 	border-width: thin;
+	border-color: #000000;
 	height: 1em;
 	width: 5em;
 	background-color: #bbbbbb;
