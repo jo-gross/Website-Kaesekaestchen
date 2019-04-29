@@ -4,19 +4,23 @@
 <meta name="author" content="Wannes Meert">
 <meta name="description" content="Auf dieser Seite kann Käsekästchen mit bis zu 6 Spielern gespielt werden!">
 <title>Käsekästchen</title>
-<link rel="stylesheet" href="stylesheet_start.css")>
+<link rel="stylesheet" href="stylesheet_start.css"/>
 </header>
 <body>
 	<div class="container">
 		<h1>Käsekästchen</h1>
-		<h2>Spieler:</h2>
-		<input type="text" class="form-control" id="players" value=2>
-		<h2>Spielfeld Größe X:</h2>
-		<input type="text" class="form-control" id="spielgroesseX" value=2>
-		<h2>Spielfeld Größe Y:</h2>
-		<input type="text" class="form-control" id="spielgroesseY" value=2>
+		<form action="javascript:onSubmitFunction()">
+		<label for="players">Spieler (2-6):</label><br>
+		<input type="number" class="form-control" id="players" min="2" max="6" value=2 required>
+<br>
+		<label for="fieldWidth">Spielfeldbreite (2-15):</label><br>
+		<input type="number" class="form-control" id="fieldWidth" min="2" max="15" value=4 required>
+<br>
+		<label for="fieldHeight">Spielfeldhöhe (2-15):</label><br>
+		<input type="number" class="form-control" id="fieldHeight"  min="2" max="15" value=4 required>
 		<br>
-		<button type="button" class="button" id="submitbutton">Senden</button>
+		<button type="submit" class="button" id="submitButton">Senden</button>
+</form>
 	</div>
 	<script src="script_start.js"></script>
 </body>

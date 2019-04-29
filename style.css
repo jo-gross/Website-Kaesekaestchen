@@ -111,7 +111,7 @@ h1{
 	width: 100%;
 }
 
-.tic-tac-toe button {
+.kk-view button {
 	left: -100vw;
 	position: absolute;
 }
@@ -131,4 +131,28 @@ h1{
 
 .invisible{
 	display: none;
+}
+
+.backButton {
+	text-decoration: none;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	color: white;
+}
+
+.title{
+	padding: 0;
+	margin: 0;
+}
+
+.author{
+	top: 0;
+	text-align: center;
+	margin: 0;
+}
+
+.author a{
+	text-decoration: none;
+	color: white;
 }

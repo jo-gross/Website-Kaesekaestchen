@@ -1,30 +1,36 @@
+/*
+Default values and var inits
+*/
 var players = 2;
-var spielgroesseX = 2;
-var spielgroesseY = 2;
+var fieldWidth = 2;
+var fieldHeight = 2;
 
-
-
+/*
+Grabs all values from the inputs and validate them again
+*/
 function getValues(){
 	players = parseInt(document.getElementById('players').value);
 	if (players == "" || isNaN(players)) {
 		players = 2;
 	}
 
-	spielgroesseX = parseInt(document.getElementById('spielgroesseX').value);
-	if (spielgroesseX == "" || isNaN(spielgroesseX)) {
-		spielgroesseX = 2;
+	fieldWidth = parseInt(document.getElementById('fieldWidth').value);
+	if (fieldWidth == "" || isNaN(fieldWidth)) {
+		fieldWidth = 2;
 	}
 
-	spielgroesseY = parseInt(document.getElementById('spielgroesseY').value);
-	if (spielgroesseY == "" || isNaN(spielgroesseY)) {
-		spielgroesseY = 2;
+	fieldHeight = parseInt(document.getElementById('fieldHeight').value);
+	if (fieldHeight == "" || isNaN(fieldHeight)) {
+		fieldHeight = 2;
 	}
 
 }
 
-var restartbtn = document.getElementById("submitbutton");
-restartbtn.onclick = function() {
-  console.log("Start game");
+/*
+Function that is called when form matches all requirements and ranges
+graps all values from the form and opens the game
+*/
+function onSubmitFunction() {
   getValues();
-  window.open ('game.html?'+players+'*'+spielgroesseX+'#'+spielgroesseY,'_self',false);
+  window.open('game.html?p='+players+'&w='+fieldWidth+'&h='+fieldHeight,'_self',false);
 };

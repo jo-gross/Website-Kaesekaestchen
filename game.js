@@ -1,60 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
-	function TicTacToe (element) {
-		var spielgroesseX = 4;
-		var spielgroesseY = 4;
+	function KKGame (element) {
+		var fieldWidth = 4;
+		var fieldHeight = 4;
 		var players = 2;
 
-		var uebernahme=new String(document.location.href);
-		var uebergabe=uebernahme.indexOf("?");
-		var fi1 = uebernahme.indexOf("*");
-		var fi2 = uebernahme.indexOf("#");
-
-		var givenPlay=new String(uebernahme.substring(uebergabe+1, fi1));
-		var givenX=new String(uebernahme.substring(fi1+1,fi2));
-		var givenY=new String(uebernahme.substring(fi2+1,uebernahme.length));
-
-		//alert(givenPlay + "#" + givenX + "#" + givenY);
+		//Grab params and parse
+		var givenPlay = findGetParameter("p");
+		var givenX = findGetParameter("w");
+		var givenY = findGetParameter("h");
 
 		if(givenX!=null && givenX!="" && parseInt(givenX) >=2){
-			spielgroesseX = parseInt(givenX);
+			fieldWidth = parseInt(givenX);
 		}
 
 		if(givenY!=null && givenY!="" && parseInt(givenY) >=2){
-			spielgroesseY = parseInt(givenY);
+			fieldHeight = parseInt(givenY);
 		}
 
 		if(givenPlay!=null && givenPlay!="" && parseInt(givenPlay) <=6 && parseInt(givenPlay) >=2){
 			players = parseInt(givenPlay);
 		}
 
+		//Set Scorepanels of unused players invisible
+		for(var i=players+1; i<7;i++){
+			document.getElementById("scoreP" + i).classList.add('invisible');
+		}
 
-				for(var i=players+1; i<7;i++){
+		//Recalc the new width of scorepanels
+		var widthCalc = (100/players) - 2;
+		document.styleSheets[0].cssRules[3].style.width = widthCalc + "%";
 
-						document.getElementById("scoreP" + i).classList.add('invisible');
-
-				}
-				var widthCalc = (100/players) - 2;
- 			document.styleSheets[0].cssRules[3].style.width = widthCalc + "%";
-		spielgroesseX = (spielgroesseX * 2) + 1;
-		spielgroesseY = (spielgroesseY * 2) + 1;
+		//Change Width to the count of elements
+		fieldWidth = (fieldWidth * 2) + 1;
+		fieldHeight = (fieldHeight * 2) + 1;
 
 		var current = 1,
 		field = document.createElement("table"),
 		finished, games, b, c, i, r, tr;
 
+		//Display current player
 		document.getElementById("scoreP" + current).classList.add('active');
 
+		//Insert new KK-Table
 		element.appendChild(field);
 		field.appendChild(document.createElement("tbody"));
 
-		for (r = 0; r < spielgroesseY; r++) {
+		for (r = 0; r < fieldHeight; r++) {
 			// neue Tabellenzeile
 			tr = document.createElement("tr");
 			field.lastChild.appendChild(tr);
 
-			for (c = 0; c < spielgroesseX; c++) {
+			for (c = 0; c < fieldWidth; c++) {
 				// neue Tabellenzelle
 				b = document.createElement("td");
 				b.id = c + ";" + r;
@@ -100,14 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
 					//td.innerHTML = "p" + current; // Spielersymbol eintragen
 					td.innerHTML = "";
 
+					//Select current and mark/unmark the scorepanel as 'active'
 					if(wasBlock == "0"){
-
 						document.getElementById("scoreP" + current).classList.remove('active');
 						current++;
 						document.getElementById("scoreP" + current).classList.add('active');
 					}
 					if(current > players){
-
 						document.getElementById("scoreP" + current).classList.remove('active');
 						current = 1;
 						document.getElementById("scoreP" + current).classList.add('active');
@@ -150,8 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				var	b3 = document.getElementById("" + b3x + ";" + b3y + "");
 
 				//TOP
-				//Nur wenn x>0 && x<spielgroesseX && y > 1 && y <= spielgroesseY
-				if(x>0 && x<spielgroesseX && y > 1 && y <= spielgroesseY ){
+				//Nur wenn x>0 && x<fieldWidth && y > 1 && y <= fieldHeight
+				if(x>0 && x<fieldWidth && y > 1 && y <= fieldHeight ){
 					if( t1.className != "quaderVertical" && t2.className != "quaderHorizontal" && t3.className != "quaderVertical"){
 						var sy = y-1;
 						var block = document.getElementById("" + x + ";" + sy + "");
@@ -163,8 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 				}
 				//Bottom
-				//Nur wenn x >0 && x<spielgroesseX && y >= 0 && y < spielgroesseY
-				if(x>0 && x<spielgroesseX && y >= 0 && y < spielgroesseY -1){
+				//Nur wenn x >0 && x<fieldWidth && y >= 0 && y < fieldHeight
+				if(x>0 && x<fieldWidth && y >= 0 && y < fieldHeight -1){
 					if(b1.className != "quaderVertical" && b2.className != "quaderHorizontal" && b3.className != "quaderVertical"){
 						var sy = parseInt(y)+1;
 						var block = document.getElementById("" + x + ";" + sy + "");
@@ -209,8 +206,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				var r3 = document.getElementById("" + r3x + ";" + r3y + "");
 
 				//LEFT
-				//Nur wenn x > 1 && x <= spielgroesseX && y > 0 && y < spielgroesseY
-				if(x > 1 && x <= spielgroesseX && y > 0 && y < spielgroesseY ){
+				//Nur wenn x > 1 && x <= fieldWidth && y > 0 && y < fieldHeight
+				if(x > 1 && x <= fieldWidth && y > 0 && y < fieldHeight ){
 					if(l1.className != "quaderHorizontal" && l2.className != "quaderVertical" && l3.className != "quaderHorizontal"){
 						var sx = x-1;
 						var block = document.getElementById("" + sx + ";" + y + "");
@@ -222,8 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 				}
 				//RIGHT
-				//Nur wenn x >= 0 && x < spielgroesseX && y > o && y < spielgroesseY
-				if(x >= 0 && x < spielgroesseX-1 && y > 0 && y < spielgroesseY ){
+				//Nur wenn x >= 0 && x < fieldWidth && y > o && y < fieldHeight
+				if(x >= 0 && x < fieldWidth-1 && y > 0 && y < fieldHeight ){
 					if(r1.className != "quaderHorizontal" && r2.className != "quaderVertical" && r3.className != "quaderHorizontal"){
 						var sx = parseInt(x)+1;
 						var block = document.getElementById("" + sx + ";" + y + "");
@@ -273,23 +270,21 @@ document.addEventListener("DOMContentLoaded", function () {
 				scoreP5 = parseInt(scoreP5.innerHTML);
 				scoreP6 = parseInt(scoreP6.innerHTML);
 
-//				alert(scoreP1 + " " + scoreP2 + " " + scoreP3 + " " + scoreP4 + " " + scoreP5 + " " + scoreP6)
+				//				alert(scoreP1 + " " + scoreP2 + " " + scoreP3 + " " + scoreP4 + " " + scoreP5 + " " + scoreP6)
 
 				var endstring = "";
 
-				     if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)endstring = "Spieler 1 gewinnt mit " +scoreP1 + " Punkten";
+				if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)endstring = "Spieler 1 gewinnt mit " +scoreP1 + " Punkten";
 				else if(scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)endstring = "Spieler 2 gewinnt mit " +scoreP2 + " Punkten";
 				else if(scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)endstring = "Spieler 3 gewinnt mit " +scoreP3 + " Punkten";
 				else if(scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)endstring = "Spieler 4 gewinnt mit " +scoreP4 + " Punkten";
 				else if(scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)endstring = "Spieler 5 gewinnt mit " +scoreP5 + " Punkten";
 				else if(scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)endstring = "Spieler 6 gewinnt mit " +scoreP6 + " Punkten";
 				else endstring = "Unentschieden!";
-
+				
 				alert(endstring + "\n\n Drücke Ok für ein weiteres Spiel!");
 
-				//alert("");
-
-				window.open ('index.html?'+players+'*'+((spielgroesseX-1)/2)+'#'+((spielgroesseY-1)/2),'_self',false);
+				window.open ('index.html','_self',false);
 
 			}
 		}
@@ -297,11 +292,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		field.addEventListener("click", mark);
 	}
 
-	games = document.querySelectorAll(".tic-tac-toe");
+	games = document.querySelectorAll(".kk-view");
 
 	for (i = 0; i < games.length; i++) {
-		TicTacToe(games[i]); // aktuelles Fundstück steht in games[i]
+		KKGame(games[i]); // aktuelles Fundstück steht in games[i]
 	}
 
+	//get Params from url
+	function findGetParameter(parameterName) {
+		var result = null,
+		tmp = [];
+		location.search
+		.substr(1)
+		.split("&")
+		.forEach(function (item) {
+			tmp = item.split("=");
+			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		});
+		return result;
+	}
 
 });
