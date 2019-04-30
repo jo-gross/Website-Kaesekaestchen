@@ -153,6 +153,6 @@ h1{
 }
 
 .author a{
-	text-decoration: none;
+	/* text-decoration: none; */
 	color: white;
 }
