@@ -102,13 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
 					if(wasBlock == "0"){
 						document.getElementById("scoreP" + current).classList.remove('active');
 						current++;
+						if(current > players){
+							current = 1;
+							document.getElementById("scoreP" + current).classList.add('active');
+						}else{
+
 						document.getElementById("scoreP" + current).classList.add('active');
-					}
-					if(current > players){
-						document.getElementById("scoreP" + current).classList.remove('active');
-						current = 1;
-						document.getElementById("scoreP" + current).classList.add('active');
-					}
+					}}
 				}
 			}
 
@@ -272,19 +272,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				//				alert(scoreP1 + " " + scoreP2 + " " + scoreP3 + " " + scoreP4 + " " + scoreP5 + " " + scoreP6)
 
-				var endstring = "";
+				var pointsArray = [
+					{id:"1", name: "Spieler 1", points: scoreP1},
+{id:"2", name: "Spieler 2", points: scoreP2},
+{id:"3", name: "Spieler 3", points: scoreP3},
+{id:"4", name: "Spieler 4", points: scoreP4},
+{id:"5", name: "Spieler 5", points: scoreP5},
+{id:"6", name: "Spieler 6", points: scoreP6}
+				];
 
-				if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)endstring = "Spieler 1 gewinnt mit " +scoreP1 + " Punkten";
-				else if(scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)endstring = "Spieler 2 gewinnt mit " +scoreP2 + " Punkten";
-				else if(scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)endstring = "Spieler 3 gewinnt mit " +scoreP3 + " Punkten";
-				else if(scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)endstring = "Spieler 4 gewinnt mit " +scoreP4 + " Punkten";
-				else if(scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)endstring = "Spieler 5 gewinnt mit " +scoreP5 + " Punkten";
-				else if(scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)endstring = "Spieler 6 gewinnt mit " +scoreP6 + " Punkten";
-				else endstring = "Unentschieden!";
-				
-				alert(endstring + "\n\n Drücke Ok für ein weiteres Spiel!");
-
-				window.open ('index.html','_self',false);
+				// alert(endstring + "\n\n Drücke Ok für ein weiteres Spiel!");
+				callEndScreen(players, pointsArray);
 
 			}
 		}
@@ -297,6 +295,66 @@ document.addEventListener("DOMContentLoaded", function () {
 	for (i = 0; i < games.length; i++) {
 		KKGame(games[i]); // aktuelles Fundstück steht in games[i]
 	}
+
+	function callEndScreen(playersCount, points){
+		var endscreen = document.getElementById("endOverlay");
+		endscreen.classList.remove("invisible");
+
+		var playerList = document.getElementById("playerHighscoreList");
+
+		var endstring = "";
+
+		var scoreP1 = points[0]["points"];
+		var scoreP2 = points[1]["points"];
+		var scoreP3 = points[2]["points"];
+		var scoreP4 = points[3]["points"];
+		var scoreP5 = points[4]["points"];
+		var scoreP6 = points[5]["points"];
+
+		if(scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4 && scoreP1 > scoreP5 && scoreP1 > scoreP6)endstring = "Spieler 1 gewinnt mit " +scoreP1 + " Punkten";
+		else if(scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4 && scoreP2 > scoreP5 && scoreP2 > scoreP6)endstring = "Spieler 2 gewinnt mit " +scoreP2 + " Punkten";
+		else if(scoreP3 > scoreP2 && scoreP3 > scoreP1 && scoreP3 > scoreP4 && scoreP3 > scoreP5 && scoreP3 > scoreP6)endstring = "Spieler 3 gewinnt mit " +scoreP3 + " Punkten";
+		else if(scoreP4 > scoreP2 && scoreP4 > scoreP3 && scoreP4 > scoreP1 && scoreP4 > scoreP5 && scoreP4 > scoreP6)endstring = "Spieler 4 gewinnt mit " +scoreP4 + " Punkten";
+		else if(scoreP5 > scoreP2 && scoreP5 > scoreP3 && scoreP5 > scoreP4 && scoreP5 > scoreP1 && scoreP5 > scoreP6)endstring = "Spieler 5 gewinnt mit " +scoreP5 + " Punkten";
+		else if(scoreP6 > scoreP2 && scoreP6 > scoreP3 && scoreP6 > scoreP4 && scoreP6 > scoreP5 && scoreP6 > scoreP1)endstring = "Spieler 6 gewinnt mit " +scoreP6 + " Punkten";
+		else endstring = "Unentschieden!";
+
+
+		var winnerLabel = document.getElementById("winnerLabel");
+		winnerLabel.innerHTML=endstring;
+
+		points.sort( compare );
+
+		for(var i = 0; i < playersCount; i++){
+
+			playerList.innerHTML+= "<div class=\"p"+points[i]["id"]+" playerListItem\"><p>"+ points[i]["name"] +" - "+ points[i]["points"] +" Pt.</p></div>";
+
+		}
+
+		var playAgainButton = document.getElementById("btnPlayAgain");
+		playAgainButton.onclick = function(){
+			window.open ('index.html','_self',false);
+		}
+	}
+
+	function compare( a, b ) {
+	  if ( a.points < b.points ){
+	    return 1;
+	  }else 	  if ( a.points > b.points ){
+	    return -1;
+	  }else {
+			if ( a.id < b.id ){
+				return -1;
+			}else 	  if ( a.id > b.id ){
+				return 1;
+			}else{
+
+			  return 0;
+			}
+		}
+	  return 0;
+	}
+
 
 	//get Params from url
 	function findGetParameter(parameterName) {
