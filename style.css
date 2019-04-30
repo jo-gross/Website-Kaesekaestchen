@@ -176,6 +176,10 @@ h1{
 	background-color: rgb(88, 88, 88);
 }
 
+.endscreen h2{
+	margin-top: 0;
+}
+
 .endscreen{
 	color: white;
 }
